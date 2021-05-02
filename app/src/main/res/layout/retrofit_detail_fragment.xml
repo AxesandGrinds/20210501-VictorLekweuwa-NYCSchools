@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.a20210501_victorlekweuwa_nycschools.shared.SharedViewModel"/>
+    </data>
+
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <FrameLayout
+            android:id="@+id/schoolNameFL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" >
+
+            <TextView
+                android:id="@+id/schoolNameText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@{viewModel.currentSchool.school_name}"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:maxLines="@integer/max_text_lines_num"
+                tools:text="School Name" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/boroughText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/schoolNameFL"
+            app:layout_constraintBottom_toTopOf="@+id/schoolWebsiteText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{viewModel.currentSchool.borough}"
+            tools:text="Bronx" />
+
+        <TextView
+            android:id="@+id/schoolWebsiteText"
+            android:autoLink="web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/boroughText"
+            app:layout_constraintBottom_toTopOf="@+id/link_preview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{viewModel.currentSchool.website}"
+            tools:text="www.school.com" />
+
+        <com.overflowarchives.linkpreview.WhatsappPreview
+            android:id="@+id/link_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/schoolWebsiteText" />
+
+<!--        <com.nick.mowen.linkpreview.view.LinkPreview-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/previewSchoolSite"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/descriptionText"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/schoolWebsiteText" />-->
+
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{viewModel.currentSchool.overview_paragraph}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/numberOfStudentsLL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/link_preview"
+            tools:text="Mingle excels at doing twice the work in half the time, with pinpoint accuracy.  These skills serve her well in her role as Senior Data Analyst for an international cloud computing company. She's also got a penchant for ballroom dance, line dancing, and pretty much any kind of activity that lets her groove to music." />
+
+        <LinearLayout
+            android:id="@+id/numberOfStudentsLL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <TextView
+                android:id="@+id/numberOfStudentsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Number of Students: "
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/numberOfStudents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.selectedSchool.num_of_sat_test_takers}"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/criticalReadingAverageLL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/numberOfStudentsLL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <TextView
+                android:id="@+id/criticalReadingAverageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Critical Reading Average: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/criticalReadingAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.selectedSchool.sat_critical_reading_avg_score}"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mathAverageLL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/criticalReadingAverageLL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <TextView
+                android:id="@+id/mathAverageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Math Average: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mathAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.selectedSchool.sat_math_avg_score}"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/writingAverageLL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/mathAverageLL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <TextView
+                android:id="@+id/writingAverageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Writing Average: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/writingAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.selectedSchool.sat_writing_avg_score}"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

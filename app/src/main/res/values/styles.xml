@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+  <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+    <item name="colorPrimary">@color/scan_background</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:fitsSystemWindows">true</item>
+  </style>
+
+  <style name="SplashTheme" parent ="Theme.MaterialComponents.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_screen_background</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+
+  <style name="AppBarTheme" parent="Theme.MaterialComponents.Light">
+    <item name="colorPrimary">@color/scan_background</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="colorAccent">@color/colorPrimaryDark</item>
+    <item name="actionBarTheme">@style/AppTheme.AppBarOverlay</item>
+    <item name="android:fitsSystemWindows">true</item>
+  </style>
+
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <item name="android:textColorPrimary">@color/colorPrimary</item>
+  </style>
+
+
+</resources>
